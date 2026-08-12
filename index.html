@@ -1,0 +1,2753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PESTLE + SWOT + TOWS – Assessment Clinic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ===== BATH SPA UNIVERSITY THEME + ENHANCED DESIGN ===== */
+        :root {
+            /* Brand Colors */
+            --bsu-navy: #003366;
+            --bsu-navy-light: #1a4d80;
+            --bsu-blue: #0055A4;
+            --bsu-light-blue: #4C98C9;
+            --bsu-gold: #c9a84c;
+            --bsu-gold-light: #e6c97a;
+            --bsu-purple: #8b5cf6;
+            --bsu-purple-light: #a78bfa;
+            
+            /* UI Colors - Light Mode */
+            --bg-page: linear-gradient(135deg, #f8fafc 0%, #e8f0f8 50%, #f0f4fa 100%);
+            --bg-card: rgba(255, 255, 255, 0.95);
+            --bg-card-hover: rgba(255, 255, 255, 1);
+            --bg-input: #ffffff;
+            --bg-section: rgba(240, 244, 250, 0.8);
+            --bg-highlight: rgba(0, 51, 102, 0.06);
+            --bg-feedback: rgba(252, 249, 240, 0.95);
+            --bg-action-plan: rgba(139, 92, 246, 0.08);
+            --bg-stage3: rgba(59, 130, 246, 0.08);
+            
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --text-on-navy: #ffffff;
+            
+            --border-light: rgba(0, 51, 102, 0.15);
+            --border-medium: rgba(0, 51, 102, 0.25);
+            --border-focus: rgba(0, 51, 102, 0.5);
+            
+            --shadow-sm: 0 2px 8px rgba(0, 51, 102, 0.08);
+            --shadow: 0 8px 30px rgba(0, 51, 102, 0.12);
+            --shadow-lg: 0 20px 60px rgba(0, 51, 102, 0.18);
+            --shadow-glow: 0 0 0 4px rgba(0, 51, 102, 0.1);
+            --shadow-glow-gold: 0 0 0 4px rgba(201, 168, 76, 0.2);
+            
+            --radius-sm: 10px;
+            --radius: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* PESTLE Color Coding */
+            --pestle-political: #ef4444;
+            --pestle-economic: #f59e0b;
+            --pestle-social: #8b5cf6;
+            --pestle-technological: #06b6d4;
+            --pestle-legal: #10b981;
+            --pestle-environmental: #22c55e;
+            
+            /* SWOT Color Coding */
+            --swot-strengths: #10b981;
+            --swot-weaknesses: #ef4444;
+            --swot-opportunities: #3b82f6;
+            --swot-threats: #f59e0b;
+        }
+
+        /* Dark Mode Variables */
+        [data-theme="dark"] {
+            --bg-page: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            --bg-card: rgba(30, 41, 59, 0.95);
+            --bg-card-hover: rgba(30, 41, 59, 1);
+            --bg-input: #1e293b;
+            --bg-section: rgba(30, 41, 59, 0.8);
+            --bg-highlight: rgba(100, 150, 200, 0.1);
+            --bg-feedback: rgba(45, 38, 25, 0.95);
+            --bg-action-plan: rgba(139, 92, 246, 0.15);
+            --bg-stage3: rgba(59, 130, 246, 0.15);
+            
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            
+            --border-light: rgba(100, 150, 200, 0.2);
+            --border-medium: rgba(100, 150, 200, 0.35);
+            --border-focus: rgba(100, 150, 200, 0.6);
+            
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.45);
+            --shadow-glow: 0 0 0 4px rgba(100, 150, 200, 0.15);
+        }
+
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 20px;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg-page);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 20px;
+            transition: background var(--transition), color var(--transition);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        /* ===== THEME TOGGLE ===== */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-card);
+            border: 2px solid var(--border-medium);
+            border-radius: 30px;
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            z-index: 1000;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+            backdrop-filter: blur(10px);
+        }
+
+        [data-theme="dark"] .theme-toggle {
+            background: var(--bg-card);
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--bsu-navy);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .theme-toggle-icon {
+            font-size: 1.3rem;
+            transition: transform var(--transition);
+        }
+
+        [data-theme="dark"] .theme-toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .activity-container {
+            max-width: 1150px;
+            width: 100%;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            padding: 45px 50px;
+            border-top: 6px solid var(--bsu-navy);
+            position: relative;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Decorative corner accents */
+        .activity-container::before,
+        .activity-container::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border: 3px solid var(--bsu-gold);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .activity-container::before {
+            top: 20px;
+            left: 20px;
+            border-right: none;
+            border-bottom: none;
+            border-radius: 12px 0 0 0;
+        }
+
+        .activity-container::after {
+            bottom: 20px;
+            right: 20px;
+            border-left: none;
+            border-top: none;
+            border-radius: 0 0 12px 0;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            border-bottom: 3px solid var(--bsu-navy);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--bsu-gold), var(--bsu-navy));
+            border-radius: 2px;
+        }
+
+        .header .module-code {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--bsu-navy);
+            text-transform: uppercase;
+            background: var(--bg-highlight);
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--border-light);
+        }
+
+        [data-theme="dark"] .header .module-code {
+            color: var(--bsu-light-blue);
+        }
+
+        .header .session-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--bsu-navy);
+            margin-top: 12px;
+        }
+
+        [data-theme="dark"] .header .session-title {
+            color: var(--bsu-light-blue);
+        }
+
+        .header .activity-type {
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--bsu-navy);
+            margin: 20px 0 8px;
+            line-height: 1.2;
+        }
+
+        [data-theme="dark"] h1 {
+            color: var(--bsu-light-blue);
+        }
+
+        .subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+            border-left: 4px solid var(--bsu-navy);
+            padding: 14px 20px;
+            border-radius: 0 8px 8px 0;
+            background: var(--bg-highlight);
+            font-weight: 500;
+        }
+
+        /* ===== STAGE INDICATOR ===== */
+        .stage-indicator {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 25px 0 35px;
+            padding: 15px 20px;
+            background: var(--bg-section);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-light);
+            position: relative;
+        }
+
+        .stage-indicator::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: var(--border-light);
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .stage-indicator::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--bsu-navy), var(--bsu-gold));
+            transform: translateY(-50%);
+            z-index: 2;
+            transition: width 0.4s ease;
+            border-radius: 2px;
+        }
+
+        .stage-indicator.completed::after {
+            width: 80%;
+        }
+
+        .stage-dot {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 3px solid var(--border-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--text-muted);
+            position: relative;
+            z-index: 3;
+            transition: all var(--transition);
+        }
+
+        .stage-dot.active {
+            border-color: var(--bsu-navy);
+            background: var(--bsu-navy);
+            color: white;
+            box-shadow: 0 0 0 4px rgba(0, 51, 102, 0.2);
+            transform: scale(1.1);
+        }
+
+        .stage-dot.completed {
+            border-color: var(--bsu-gold);
+            background: var(--bsu-gold);
+            color: var(--bsu-navy);
+        }
+
+        .stage-label {
+            position: absolute;
+            top: 45px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            white-space: nowrap;
+            text-align: center;
+            width: 100px;
+        }
+
+        .stage-dot.active + .stage-label,
+        .stage-dot.completed + .stage-label {
+            color: var(--bsu-navy);
+            font-weight: 700;
+        }
+
+        [data-theme="dark"] .stage-dot.active + .stage-label,
+        [data-theme="dark"] .stage-dot.completed + .stage-label {
+            color: var(--bsu-light-blue);
+        }
+
+        /* ===== STAGE INSTRUCTIONS ===== */
+        .stage-instructions {
+            background: var(--bg-section);
+            border-radius: var(--radius-lg);
+            padding: 24px 28px;
+            margin-bottom: 35px;
+            border-left: 5px solid var(--bsu-navy);
+            border: 1px solid var(--border-light);
+            transition: transform var(--transition), box-shadow var(--transition);
+            position: relative;
+        }
+
+        .stage-instructions:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .stage-instructions h3 {
+            color: var(--bsu-navy);
+            font-size: 19px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        [data-theme="dark"] .stage-instructions h3 {
+            color: var(--bsu-light-blue);
+        }
+
+        .stage-instructions .stage {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-light);
+            transition: all var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stage-instructions .stage::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--bsu-navy), var(--bsu-gold));
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+
+        .stage-instructions .stage:hover::before {
+            opacity: 1;
+        }
+
+        .stage-instructions .stage:last-child {
+            margin-bottom: 0;
+        }
+
+        .stage-instructions .stage .stage-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .stage-instructions .stage .stage-title {
+            font-weight: 700;
+            color: var(--bsu-navy);
+            font-size: 16px;
+        }
+
+        [data-theme="dark"] .stage-instructions .stage .stage-title {
+            color: var(--bsu-light-blue);
+        }
+
+        .stage-instructions .stage .stage-time {
+            font-weight: 600;
+            color: var(--bsu-gold);
+            font-size: 13px;
+            background: rgba(201, 168, 76, 0.15);
+            padding: 3px 10px;
+            border-radius: 12px;
+        }
+
+        .stage-instructions .stage p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-top: 6px;
+        }
+
+        .stage-instructions .stage ul {
+            padding-left: 24px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-top: 6px;
+        }
+
+        .stage-instructions .stage ul li {
+            list-style-type: none;
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 4px;
+        }
+
+        .stage-instructions .stage ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--bsu-navy);
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        [data-theme="dark"] .stage-instructions .stage ul li::before {
+            color: var(--bsu-light-blue);
+        }
+
+        /* ===== TEXT-TO-SPEECH BUTTON ===== */
+        .tts-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--bsu-navy);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+            z-index: 10;
+        }
+
+        .tts-btn:hover {
+            background: var(--bsu-blue);
+            transform: scale(1.1);
+        }
+
+        .tts-btn.speaking {
+            background: var(--bsu-gold);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .stage-instructions {
+            padding-right: 50px;
+        }
+
+        /* ===== SECTION TITLES ===== */
+        .section-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--bsu-navy);
+            margin: 40px 0 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--bsu-navy), var(--bsu-gold));
+            border-radius: 2px;
+        }
+
+        [data-theme="dark"] .section-title {
+            color: var(--bsu-light-blue);
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-style: italic;
+            padding-left: 16px;
+            border-left: 3px dashed var(--border-light);
+        }
+
+        /* ===== TOOL CARDS - ENHANCED ===== */
+        .tool-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+            margin-bottom: 24px;
+        }
+
+        .tool-card {
+            background: var(--bg-card);
+            border: 2px solid var(--border-light);
+            border-radius: var(--radius);
+            padding: 20px 22px;
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--bsu-navy);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition);
+        }
+
+        .tool-card:hover {
+            border-color: var(--bsu-navy);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .tool-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* PESTLE Color Variants */
+        .tool-card[data-pestle="political"] { border-left-color: var(--pestle-political); }
+        .tool-card[data-pestle="political"]::before { background: var(--pestle-political); }
+        .tool-card[data-pestle="economic"] { border-left-color: var(--pestle-economic); }
+        .tool-card[data-pestle="economic"]::before { background: var(--pestle-economic); }
+        .tool-card[data-pestle="social"] { border-left-color: var(--pestle-social); }
+        .tool-card[data-pestle="social"]::before { background: var(--pestle-social); }
+        .tool-card[data-pestle="technological"] { border-left-color: var(--pestle-technological); }
+        .tool-card[data-pestle="technological"]::before { background: var(--pestle-technological); }
+        .tool-card[data-pestle="legal"] { border-left-color: var(--pestle-legal); }
+        .tool-card[data-pestle="legal"]::before { background: var(--pestle-legal); }
+        .tool-card[data-pestle="environmental"] { border-left-color: var(--pestle-environmental); }
+        .tool-card[data-pestle="environmental"]::before { background: var(--pestle-environmental); }
+
+        .tool-card h3 {
+            color: var(--bsu-navy);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        [data-theme="dark"] .tool-card h3 {
+            color: var(--bsu-light-blue);
+        }
+
+        .tool-card .description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+            line-height: 1.6;
+        }
+
+        .tool-card textarea {
+            width: 100%;
+            min-height: 70px;
+            padding: 12px 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            line-height: 1.7;
+            border: 2px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            background: var(--bg-input);
+            color: var(--text-primary);
+            resize: vertical;
+            transition: all var(--transition);
+        }
+
+        .tool-card textarea:focus {
+            outline: none;
+            border-color: var(--bsu-navy);
+            box-shadow: var(--shadow-glow);
+            background: var(--bg-card);
+        }
+
+        .tool-card textarea::placeholder {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 13px;
+        }
+
+        .tool-card .hint {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 500;
+        }
+
+        .tool-card .hint::before {
+            content: '💡';
+        }
+
+        .char-counter {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: right;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .char-counter.warning { color: var(--pestle-economic); }
+        .char-counter.danger { color: var(--pestle-political); }
+
+        /* SWOT Color Variants */
+        .tool-card[data-swot="strengths"] { border-left: 4px solid var(--swot-strengths); }
+        .tool-card[data-swot="strengths"] h3 { color: var(--swot-strengths); }
+        .tool-card[data-swot="weaknesses"] { border-left: 4px solid var(--swot-weaknesses); }
+        .tool-card[data-swot="weaknesses"] h3 { color: var(--swot-weaknesses); }
+        .tool-card[data-swot="opportunities"] { border-left: 4px solid var(--swot-opportunities); }
+        .tool-card[data-swot="opportunities"] h3 { color: var(--swot-opportunities); }
+        .tool-card[data-swot="threats"] { border-left: 4px solid var(--swot-threats); }
+        .tool-card[data-swot="threats"] h3 { color: var(--swot-threats); }
+
+        [data-theme="dark"] .tool-card[data-swot="strengths"] h3 { color: #6ee7b7; }
+        [data-theme="dark"] .tool-card[data-swot="weaknesses"] h3 { color: #fca5a5; }
+        [data-theme="dark"] .tool-card[data-swot="opportunities"] h3 { color: #93c5fd; }
+        [data-theme="dark"] .tool-card[data-swot="threats"] h3 { color: #fcd34d; }
+
+        /* TOWS GRID */
+        .tows-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-top: 14px;
+        }
+
+        .tows-cell {
+            background: var(--bg-card);
+            border: 2px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 16px 18px;
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tows-cell::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--bsu-navy);
+            transition: width var(--transition);
+        }
+
+        .tows-cell:hover {
+            border-color: var(--bsu-navy);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tows-cell:hover::before {
+            width: 100%;
+            opacity: 0.08;
+        }
+
+        .tows-cell[data-strategy="so"]::before { background: linear-gradient(to bottom, var(--swot-strengths), var(--swot-opportunities)); }
+        .tows-cell[data-strategy="wo"]::before { background: linear-gradient(to bottom, var(--swot-weaknesses), var(--swot-opportunities)); }
+        .tows-cell[data-strategy="st"]::before { background: linear-gradient(to bottom, var(--swot-strengths), var(--swot-threats)); }
+        .tows-cell[data-strategy="wt"]::before { background: linear-gradient(to bottom, var(--swot-weaknesses), var(--swot-threats)); }
+
+        .tows-cell h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--bsu-navy);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        [data-theme="dark"] .tows-cell h4 {
+            color: var(--bsu-light-blue);
+        }
+
+        .tows-cell .description {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .tows-cell textarea {
+            width: 100%;
+            min-height: 55px;
+            padding: 10px 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            background: var(--bg-input);
+            color: var(--text-primary);
+            resize: vertical;
+            transition: all var(--transition);
+        }
+
+        .tows-cell textarea:focus {
+            outline: none;
+            border-color: var(--bsu-navy);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .tows-cell textarea::placeholder {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 13px;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            background: var(--bg-section);
+            border-radius: var(--radius-lg);
+            padding: 24px 28px;
+            margin: 35px 0;
+            border-left: 5px solid var(--bsu-navy);
+            border: 1px solid var(--border-light);
+            position: relative;
+        }
+
+        .checklist::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--bsu-navy), var(--bsu-gold), var(--bsu-navy));
+            border-radius: 4px 4px 0 0;
+            animation: gradientMove 3s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .checklist h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--bsu-navy);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        [data-theme="dark"] .checklist h4 {
+            color: var(--bsu-light-blue);
+        }
+
+        .checklist ul {
+            padding-left: 8px;
+            color: var(--text-secondary);
+            line-height: 2.1;
+            font-size: 15px;
+            list-style: none;
+            counter-reset: checklist;
+        }
+
+        .checklist ul li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 8px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background var(--transition-fast);
+            counter-increment: checklist;
+            position: relative;
+        }
+
+        .checklist ul li:hover {
+            background: rgba(0, 51, 102, 0.05);
+        }
+
+        [data-theme="dark"] .checklist ul li:hover {
+            background: rgba(100, 150, 200, 0.1);
+        }
+
+        .checklist ul li::before {
+            content: counter(checklist);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--bsu-navy);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .checklist ul li input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--bsu-navy);
+            cursor: pointer;
+            flex-shrink: 0;
+            margin-top: 3px;
+            border-radius: 4px;
+            transition: transform var(--transition-fast);
+        }
+
+        .checklist ul li input[type="checkbox"]:checked {
+            transform: scale(1.1);
+        }
+
+        .checklist ul li label {
+            cursor: pointer;
+            flex: 1;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+
+        .checklist ul li input[type="checkbox"]:checked + label {
+            text-decoration: line-through;
+            opacity: 0.7;
+            color: var(--text-muted);
+        }
+
+        .checklist-progress {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px dashed var(--border-light);
+        }
+
+        .progress-ring {
+            width: 40px;
+            height: 40px;
+        }
+
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.4s ease;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        .checklist-progress-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .checklist-progress-text.complete {
+            color: var(--swot-strengths);
+            font-weight: 700;
+        }
+
+        /* PEER FEEDBACK SECTION */
+        .peer-feedback-section {
+            background: var(--bg-feedback);
+            border: 2px solid var(--bsu-gold);
+            border-radius: var(--radius-lg);
+            padding: 28px 32px;
+            margin: 40px 0;
+            border-left: 5px solid var(--bsu-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .peer-feedback-section::before {
+            content: '🗣️';
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            font-size: 80px;
+            opacity: 0.08;
+            pointer-events: none;
+            transform: rotate(15deg);
+        }
+
+        .peer-feedback-section h2 {
+            color: var(--bsu-navy);
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        [data-theme="dark"] .peer-feedback-section h2 {
+            color: var(--bsu-light-blue);
+        }
+
+        .peer-feedback-section .sub {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .peer-feedback-section .sub strong {
+            color: var(--bsu-navy);
+            font-weight: 700;
+        }
+
+        [data-theme="dark"] .peer-feedback-section .sub strong {
+            color: var(--bsu-light-blue);
+        }
+
+        .peer-name {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 14px 18px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--bsu-navy);
+            border: 1px solid var(--border-light);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .peer-name label {
+            font-weight: 700;
+            color: var(--bsu-navy);
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        [data-theme="dark"] .peer-name label {
+            color: var(--bsu-light-blue);
+        }
+
+        .peer-name input {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            background: var(--bg-input);
+            color: var(--text-primary);
+            transition: border-color var(--transition);
+        }
+
+        .peer-name input:focus {
+            outline: none;
+            border-color: var(--bsu-navy);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .peer-feedback-section .feedback-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .peer-feedback-section .feedback-box {
+            background: var(--bg-card);
+            border: 2px solid var(--border-light);
+            border-radius: var(--radius);
+            padding: 18px 20px;
+            transition: all var(--transition);
+        }
+
+        .peer-feedback-section .feedback-box:hover {
+            border-color: var(--bsu-navy);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .peer-feedback-section .feedback-box h4 {
+            color: var(--bsu-navy);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        [data-theme="dark"] .peer-feedback-section .feedback-box h4 {
+            color: var(--bsu-light-blue);
+        }
+
+        .peer-feedback-section .feedback-box .fb-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .peer-feedback-section .feedback-box textarea {
+            width: 100%;
+            min-height: 75px;
+            padding: 12px 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            line-height: 1.7;
+            border: 2px solid var(--border-light);
+            border-radius: 10px;
+            background: var(--bg-input);
+            color: var(--text-primary);
+            resize: vertical;
+            transition: all var(--transition);
+        }
+
+        .peer-feedback-section .feedback-box textarea:focus {
+            outline: none;
+            border-color: var(--bsu-navy);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .peer-feedback-section .feedback-box textarea::placeholder {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 13px;
+        }
+
+        /* ===== NEW: ACTION PLAN SECTION (SEPARATE) ===== */
+        .action-plan-section {
+            background: var(--bg-action-plan);
+            border: 2px solid var(--bsu-purple);
+            border-radius: var(--radius-lg);
+            padding: 28px 32px;
+            margin: 25px 0 40px;
+            border-left: 5px solid var(--bsu-purple);
+            position: relative;
+        }
+
+        .action-plan-section::before {
+            content: '📝';
+            position: absolute;
+            top: -15px;
+            right: 25px;
+            font-size: 60px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .action-plan-section h2 {
+            color: var(--bsu-navy);
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        [data-theme="dark"] .action-plan-section h2 {
+            color: var(--bsu-light-blue);
+        }
+
+        .action-plan-section .sub {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 18px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .action-plan-section .private-note {
+            background: rgba(139, 92, 246, 0.15);
+            border-left: 4px solid var(--bsu-purple);
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .action-plan-section textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 14px 18px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+            border: 2px solid var(--border-light);
+            border-radius: var(--radius);
+            background: var(--bg-input);
+            color: var(--text-primary);
+            resize: vertical;
+            transition: all var(--transition);
+        }
+
+        .action-plan-section textarea:focus {
+            outline: none;
+            border-color: var(--bsu-purple);
+            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .action-plan-section textarea::placeholder {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .action-plan-section .char-counter {
+            text-align: right;
+            margin-top: 6px;
+        }
+
+        /* ===== NEW: STAGE 3 CLASS SHARING SECTION ===== */
+        .stage3-section {
+            background: var(--bg-stage3);
+            border: 2px solid var(--bsu-blue);
+            border-radius: var(--radius-lg);
+            padding: 28px 32px;
+            margin: 40px 0;
+            border-left: 5px solid var(--bsu-blue);
+            position: relative;
+        }
+
+        .stage3-section::before {
+            content: '🎤';
+            position: absolute;
+            top: -15px;
+            right: 25px;
+            font-size: 60px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .stage3-section h2 {
+            color: var(--bsu-navy);
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        [data-theme="dark"] .stage3-section h2 {
+            color: var(--bsu-light-blue);
+        }
+
+        .stage3-section .sub {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .stage3-section .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 900px) {
+            .stage3-section .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stage3-card {
+            background: var(--bg-card);
+            border: 2px solid var(--border-light);
+            border-radius: var(--radius);
+            padding: 18px 20px;
+            transition: all var(--transition);
+        }
+
+        .stage3-card:hover {
+            border-color: var(--bsu-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stage3-card h4 {
+            color: var(--bsu-navy);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        [data-theme="dark"] .stage3-card h4 {
+            color: var(--bsu-light-blue);
+        }
+
+        .stage3-card .desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .stage3-card textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 12px 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            background: var(--bg-input);
+            color: var(--text-primary);
+            resize: vertical;
+            transition: all var(--transition);
+        }
+
+        .stage3-card textarea:focus {
+            outline: none;
+            border-color: var(--bsu-blue);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+        }
+
+        .stage3-card textarea::placeholder {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 13px;
+        }
+
+        .stage3-card .char-counter {
+            text-align: right;
+            margin-top: 4px;
+            font-size: 11px;
+        }
+
+        /* ONE THING BOX */
+        .one-thing {
+            background: linear-gradient(135deg, var(--bsu-navy) 0%, var(--bsu-blue) 100%);
+            color: var(--text-on-navy);
+            padding: 22px 28px;
+            border-radius: var(--radius-lg);
+            margin: 35px 0;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--bsu-gold);
+        }
+
+        .one-thing::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .one-thing span {
+            display: block;
+            font-size: 15px;
+            font-weight: 400;
+            margin-top: 10px;
+            opacity: 0.95;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* ACTION BAR */
+        .action-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 45px 0 25px;
+            padding-top: 28px;
+            border-top: 2px solid var(--border-light);
+            align-items: center;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            font-size: 15px;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--bg-section);
+            color: var(--bsu-navy);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.4s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--bsu-navy) 0%, var(--bsu-blue) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 51, 102, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--bsu-blue) 0%, var(--bsu-navy) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 51, 102, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-danger {
+            background: rgba(239, 68, 68, 0.1);
+            color: #9e2a2a;
+            border: 2px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .btn-danger:hover {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: var(--pestle-political);
+            transform: translateY(-2px);
+        }
+
+        .btn-email {
+            background: linear-gradient(135deg, #ea4335 0%, #d33426 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(234, 67, 53, 0.3);
+        }
+
+        .btn-email:hover {
+            background: linear-gradient(135deg, #d33426 0%, #ea4335 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(234, 67, 53, 0.4);
+        }
+
+        .btn-share {
+            background: linear-gradient(135deg, #4285f4 0%, #3367d6 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+        }
+
+        .btn-share:hover {
+            background: linear-gradient(135deg, #3367d6 0%, #4285f4 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(66, 133, 244, 0.4);
+        }
+
+        .action-bar .save-status {
+            margin-left: auto;
+            font-size: 13px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+
+        .action-bar .save-status.saved {
+            color: var(--swot-strengths);
+        }
+
+        .action-bar .save-status::before {
+            content: '💾';
+            font-size: 14px;
+        }
+
+        .reset-confirm {
+            display: none;
+            background: linear-gradient(135deg, #fef7e0 0%, #fff9e6 100%);
+            color: #7a6200;
+            padding: 12px 20px;
+            border-radius: 12px;
+            margin-top: 16px;
+            border: 1px solid #f0d060;
+            font-weight: 600;
+            font-size: 14px;
+            animation: slideIn 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reset-confirm.show {
+            display: block;
+        }
+
+        /* SHARE LINK MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 28px 32px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--border-medium);
+            animation: modalSlide 0.3s ease;
+        }
+
+        @keyframes modalSlide {
+            from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .modal h3 {
+            color: var(--bsu-navy);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        [data-theme="dark"] .modal h3 {
+            color: var(--bsu-light-blue);
+        }
+
+        .modal p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .modal .link-box {
+            background: var(--bg-input);
+            border: 2px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            word-break: break-all;
+            max-height: 120px;
+            overflow-y: auto;
+            color: var(--text-primary);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .modal-btn {
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .modal-btn-primary {
+            background: var(--bsu-navy);
+            color: white;
+        }
+
+        .modal-btn-primary:hover {
+            background: var(--bsu-blue);
+        }
+
+        .modal-btn-secondary {
+            background: var(--bg-section);
+            color: var(--bsu-navy);
+            border: 1px solid var(--border-light);
+        }
+
+        .modal-btn-secondary:hover {
+            background: var(--border-light);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: color var(--transition-fast);
+        }
+
+        .modal-close:hover {
+            color: var(--bsu-navy);
+        }
+
+        [data-theme="dark"] .modal-close:hover {
+            color: var(--bsu-light-blue);
+        }
+
+        /* MODULE FOOTER */
+        .module-footer {
+            background: var(--bg-section);
+            padding: 18px 24px;
+            border-radius: var(--radius);
+            margin-top: 25px;
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-light);
+            line-height: 2;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .module-footer strong {
+            font-weight: 700;
+            color: var(--bsu-navy);
+        }
+
+        [data-theme="dark"] .module-footer strong {
+            color: var(--bsu-light-blue);
+        }
+
+        .module-footer a {
+            color: var(--bsu-navy);
+            font-weight: 700;
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        [data-theme="dark"] .module-footer a {
+            color: var(--bsu-light-blue);
+        }
+
+        .module-footer a:hover {
+            color: var(--bsu-gold);
+            text-decoration: underline;
+        }
+
+        /* CONFETTI CANVAS */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #confetti-canvas.active {
+            opacity: 1;
+        }
+
+        /* TOOLTIPS */
+        [data-tooltip] {
+            position: relative;
+            cursor: help;
+        }
+
+        [data-tooltip]::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            background: var(--bsu-navy);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-fast);
+            z-index: 100;
+            box-shadow: var(--shadow);
+            max-width: 280px;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        [data-tooltip]:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        [data-theme="dark"] [data-tooltip]::after {
+            background: var(--bsu-light-blue);
+            color: var(--bsu-navy);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 900px) {
+            .activity-container {
+                padding: 35px 30px;
+            }
+            .tool-grid,
+            .tows-grid,
+            .peer-feedback-section .feedback-grid {
+                grid-template-columns: 1fr;
+            }
+            .stage-indicator {
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+            }
+            .stage-indicator::before,
+            .stage-indicator::after {
+                display: none;
+            }
+            .stage-dot {
+                position: relative;
+            }
+            .stage-label {
+                position: static;
+                transform: none;
+                width: auto;
+                margin-top: 4px;
+            }
+            h1 {
+                font-size: 26px;
+            }
+            .section-title {
+                font-size: 21px;
+            }
+            .action-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .action-bar .save-status {
+                margin-left: 0;
+                justify-content: center;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .one-thing {
+                font-size: 16px;
+                padding: 18px 22px;
+            }
+            .peer-feedback-section,
+            .action-plan-section,
+            .stage3-section {
+                padding: 24px 26px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+                font-size: 15px;
+            }
+            .activity-container {
+                padding: 28px 22px;
+                border-radius: var(--radius-lg);
+            }
+            .header .module-code {
+                font-size: 11px;
+                padding: 4px 10px;
+            }
+            .header .session-title {
+                font-size: 19px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            .subtitle {
+                font-size: 15px;
+                padding: 10px 14px;
+            }
+            .stage-instructions {
+                padding: 18px 20px;
+            }
+            .tool-card,
+            .tows-cell,
+            .peer-feedback-section .feedback-box,
+            .stage3-card {
+                padding: 16px 18px;
+            }
+            .checklist {
+                padding: 20px 22px;
+            }
+            .module-footer {
+                font-size: 13px;
+                padding: 14px 18px;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .modal {
+                padding: 24px 28px;
+                margin: 10px;
+            }
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            body {
+                background: white;
+                color: black;
+                padding: 0;
+                font-size: 14px;
+            }
+            .activity-container {
+                box-shadow: none;
+                border: 2px solid #003366;
+                border-radius: 12px;
+                padding: 30px;
+                background: white;
+            }
+            .theme-toggle,
+            .action-bar,
+            .reset-confirm,
+            #confetti-canvas,
+            .modal-overlay,
+            .tts-btn {
+                display: none !important;
+            }
+            .tool-card,
+            .tows-cell,
+            .feedback-box,
+            .stage3-card {
+                break-inside: avoid;
+                border: 1px solid #ccc;
+                box-shadow: none;
+            }
+            textarea {
+                min-height: 40px !important;
+                border: 1px solid #ccc;
+            }
+            .stage-instructions,
+            .checklist,
+            .peer-feedback-section,
+            .action-plan-section,
+            .stage3-section {
+                break-inside: avoid;
+            }
+        }
+
+        /* ACCESSIBILITY */
+        @media (prefers-contrast: high) {
+            :root {
+                --border-light: rgba(0, 0, 0, 0.5);
+                --border-medium: rgba(0, 0, 0, 0.7);
+                --shadow: none;
+                --shadow-lg: none;
+            }
+            .btn {
+                border: 2px solid currentColor;
+            }
+            .tool-card,
+            .tows-cell,
+            .feedback-box {
+                border-width: 3px;
+            }
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--bsu-gold);
+            outline-offset: 2px;
+        }
+
+        textarea:focus-visible,
+        input:focus-visible,
+        button:focus-visible {
+            outline-color: var(--bsu-navy);
+        }
+
+        [data-theme="dark"] :focus-visible {
+            outline-color: var(--bsu-light-blue);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+        <span class="theme-toggle-icon">🌓</span>
+        <span class="theme-label">Dark Mode</span>
+    </button>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Share Link Modal -->
+    <div class="modal-overlay" id="shareModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+            <h3 id="modalTitle">🔗 Save & Share Your Work</h3>
+            <p><strong>Important:</strong> Your work is saved in this browser. To continue later:</p>
+            <ol style="padding-left: 20px; margin: 12px 0; color: var(--text-secondary); font-size: 14px; line-height: 1.7;">
+                <li>Save this page as a bookmark in your browser</li>
+                <li>Or copy the link below and save it somewhere safe</li>
+                <li>Return to this page on the <strong>same device and browser</strong> to continue</li>
+            </ol>
+            <p style="font-size: 13px; color: var(--text-muted); font-style: italic;">
+                ⚠️ Note: If you clear browser data or switch devices, your work may not be recoverable. For permanent backup, use "Save as PDF" or "Email My Work".
+            </p>
+            <div class="link-box" id="shareLink"></div>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-secondary" id="copyLinkBtn">📋 Copy Link</button>
+                <button class="modal-btn modal-btn-primary" id="closeModalBtn">✓ Got It</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="activity-container" id="activityContainer">
+
+        <!-- HEADER -->
+        <div class="header">
+            <div class="module-code">BMA4000-20 | THE BUSINESS ENVIRONMENT</div>
+            <div class="session-title">Session 12: Assessment Clinic</div>
+            <div class="activity-type">📝 Interactive Template – PESTLE + SWOT + TOWS</div>
+        </div>
+
+        <h1>🏗️ Build Your Assessment Toolkit</h1>
+        <div class="subtitle">Use these templates to analyse your chosen business and prepare for your individual evaluation report.</div>
+
+        <!-- Stage Progress Indicator -->
+        <div class="stage-indicator" id="stageIndicator">
+            <div class="stage-dot active" data-stage="1">1<span class="stage-label">Individual</span></div>
+            <div class="stage-dot" data-stage="2">2<span class="stage-label">Peer Feedback</span></div>
+            <div class="stage-dot" data-stage="3">3<span class="stage-label">Class Share</span></div>
+        </div>
+
+        <!-- STAGE INSTRUCTIONS -->
+        <div class="stage-instructions">
+            <button class="tts-btn" id="ttsInstructions" aria-label="Read instructions aloud" title="Read aloud">🔊</button>
+            <h3>📋 How This Activity Works – Three Stages</h3>
+
+            <div class="stage">
+                <div class="stage-header">
+                    <span class="stage-title">Stage 1: Individual Work</span>
+                    <span class="stage-time">⏳ 30 minutes</span>
+                </div>
+                <p>Complete the templates below for your chosen business. Fill in:</p>
+                <ul>
+                    <li><strong>Business Information</strong> – name, description, why you chose it</li>
+                    <li><strong>PESTLE Analysis</strong> – all 6 external factors with sources</li>
+                    <li><strong>SWOT Analysis</strong> – strengths, weaknesses, opportunities, threats</li>
+                    <li><strong>TOWS Matrix</strong> – SO, WO, ST, WT strategies</li>
+                    <li><strong>Recommendations</strong> – 3-5 clear, actionable recommendations</li>
+                </ul>
+            </div>
+
+            <div class="stage">
+                <div class="stage-header">
+                    <span class="stage-title">Stage 2: Peer Feedback</span>
+                    <span class="stage-time">⏳ 15 minutes</span>
+                </div>
+                <p>Find a partner. Swap your work (share your screen, email, or printed copy). Then:</p>
+                <ul>
+                    <li><strong>Read</strong> your partner's analysis carefully</li>
+                    <li><strong>Complete</strong> the Peer Feedback section below for your partner</li>
+                    <li><strong>Be specific</strong> – point out strengths, gaps, and suggestions</li>
+                    <li><strong>Be kind</strong> – this is about helping, not judging</li>
+                </ul>
+            </div>
+
+            <div class="stage">
+                <div class="stage-header">
+                    <span class="stage-title">Stage 3: Class Sharing</span>
+                    <span class="stage-time">⏳ 15 minutes</span>
+                </div>
+                <p>Your tutor will facilitate a class discussion. Be ready to share:</p>
+                <ul>
+                    <li><strong>The best feedback you received</strong> – what was most helpful?</li>
+                    <li><strong>One thing you will change</strong> based on the feedback</li>
+                    <li><strong>One insight you gained</strong> from giving feedback to someone else</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- BUSINESS INFORMATION -->
+        <div class="section-title">📋 Your Chosen Business</div>
+        <div class="tool-grid">
+            <div class="tool-card" style="grid-column: 1 / -1;">
+                <h3>Business Name & Description</h3>
+                <div class="description">What is the name of the business you are analysing? What do they do? Why did you choose them?</div>
+                <textarea id="business_info" placeholder="Enter your business name and description here..." style="min-height:70px;" maxlength="1000"></textarea>
+                <div class="char-counter"><span class="current">0</span> / <span class="max">1000</span> characters</div>
+                <div class="hint">💡 Be specific – e.g., "Pret A Manger is a global sandwich chain founded in 1986..."</div>
+            </div>
+        </div>
+
+        <!-- PESTLE ANALYSIS -->
+        <div class="section-title">🌍 PESTLE Analysis – External Environment</div>
+        <div class="section-subtitle">Identify and explain the external factors affecting your chosen business.</div>
+        <div class="tool-grid">
+            <div class="tool-card" data-pestle="political">
+                <h3>🏛️ Political</h3>
+                <div class="description">Government policy, stability, trade, taxation, regulation</div>
+                <textarea id="pestle_political" placeholder="e.g., 'Government funding cuts to NHS (2024) have reduced procurement budgets...'" maxlength="600"></textarea>
+                <div class="char-counter"><span class="current">0</span> / <span class="max">600</span></div>
+                <div class="hint" data-tooltip="Include credible sources like government reports, news articles, or academic research">💡 Include source: (Author, Date)</div>
+            </div>
+            <div class="tool-card" data-pestle="economic">
+                <h3>💰 Economic</h3>
+                <div class="description">Inflation, growth, interest rates, unemployment, exchange rates</div>
+                <textarea id="pestle_economic" placeholder="e.g., 'Inflation at 4.5% (ONS, 2024) has increased ingredient costs...'" maxlength="600"></textarea>
+                <div class="char-counter"><span class="current">0</span> / <span class="max">600</span></div>
+                <div class="hint" data-tooltip="Use official statistics from ONS, Bank of England, or OECD">💡 Include source: (Author, Date)</div>
+            </div>
+            <div class="tool-card" data-pestle="social">
+                <h3>👥 Socio-Cultural</h3>
+                <div class="description">Demographics, culture, health trends, consumer behaviour</div>
+                <textarea id="pestle_social" placeholder="e.g., 'Rising demand for plant-based options (Mintel, 2024) has shifted consumer preferences...'" maxlength="600"></textarea>
+                <div class="char-counter"><span class="current">0</span> / <span class="max">600</span></div>
+                <div class="hint" data-tooltip="Consider demographic shifts, lifestyle trends, and cultural values">💡 Include source: (Author, Date)</div>
+            </div>
+            <div class="tool-card" data-pestle="technological">
+                <h3>💻 Technological</h3>
+                <div class="description">Innovation, automation, digital, AI, cybersecurity</div>
+                <textarea id="pestle_technological" placeholder="e.g., 'AI-powered supply chain optimisation (Deloitte, 2024) has reduced waste...'" maxlength="600"></textarea>
+                <div class="char-counter"><span class="current">0</span> / <span class="max">600</span></div>
+                <div class="hint" data-tooltip="Think about emerging technologies that could disrupt or enable the business">💡 Include source: (Author, Date)</div>
+            </div>
+            <div class="tool-card" data-pestle="legal">
+                <h3>⚖️ Legal & Regulatory</h3>
+                <div class="description">Laws, compliance, employment law, data protection, competition law</div>
+                <textarea id="pestle_legal" placeholder="e.g., 'New data protection regulations (GDPR, 2018) have increased compliance costs...'" maxlength="600"></textarea>
+                <div class="char-counter"><span class="current">0</span> / <span class="max">600</span></div>
+                <div class="hint" data-tooltip="Include UK-specific legislation and EU regulations if relevant">💡 Include source: (Author, Date)</div>
+            </div>
+            <div class="tool-card" data-pestle="environmental">
+                <h3>🌱 Environmental</h3>
+                <div class="description">Climate change, sustainability, resources, pollution</div>
+                <textarea id="pestle_environmental" placeholder="e.g., 'PFAS regulations (Environment Act, 2021) have impacted manufacturing processes...'" maxlength="600"></textarea>
+                <div class="char-counter"><span class="current">0</span> / <span class="max">600</span></div>
+                <div class="hint" data-tooltip="Consider net zero targets, circular economy, and environmental legislation">💡 Include source: (Author, Date)</div>
+            </div>
+        </div>
+
+        <!-- SWOT ANALYSIS -->
+        <div class="section-title">🧩 SWOT Analysis – Internal + External</div>
+        <div class="section-subtitle">Identify strengths, weaknesses, opportunities, and threats for your chosen business.</div>
+        <div class="tool-grid">
+            <div class="tool-card" data-swot="strengths">
+                <h3>💪 Strengths (Internal)</h3>
+                <div class="description">What does the business do well? What advantages do they have?</div>
+                <textarea id="swot_strengths" placeholder="e.g., 'Strong brand reputation, loyal customer base, efficient supply chain...'" maxlength="500"></textarea>
+                <div class="char-counter"><span class="current">0</span> / <span class="max">500</span></div>
+                <div class="hint">💡 Think about: resources, capabilities, brand, culture, IP</div>
+            </div>
+            <div class="tool-card" data-swot="weaknesses">
+                <h3>🔻 Weaknesses (Internal)</h3>
+                <div class="description">What could the business improve? What disadvantages do they have?</div>
+                <textarea id="swot_weaknesses" placeholder="e.g., 'Limited online presence, high operating costs, dependency on key suppliers...'" maxlength="500"></textarea>
+                <div class="char-counter"><span class="current">0</span> / <span class="max">500</span></div>
+                <div class="hint">💡 Think about: gaps, vulnerabilities, resource limitations</div>
+            </div>
+            <div class="tool-card" data-swot="opportunities">
+                <h3>🚀 Opportunities (External)</h3>
+                <div class="description">What opportunities exist in the market? What could the business seize?</div>
+                <textarea id="swot_opportunities" placeholder="e.g., 'Growing demand for sustainable products, expansion into new markets...'" maxlength="500"></textarea>
+                <div class="char-counter"><span class="current">0</span> / <span class="max">500</span></div>
+                <div class="hint">💡 Think about: trends, gaps, technology, partnerships</div>
+            </div>
+            <div class="tool-card" data-swot="threats">
+                <h3>⚠️ Threats (External)</h3>
+                <div class="description">What could harm the business? What risks do they face?</div>
+                <textarea id="swot_threats" placeholder="e.g., 'New competitors, economic downturn, regulatory changes...'" maxlength="500"></textarea>
+                <div class="char-counter"><span class="current">0</span> / <span class="max">500</span></div>
+                <div class="hint">💡 Think about: competition, regulation, economic conditions, supply chain risks</div>
+            </div>
+        </div>
+
+        <!-- TOWS MATRIX -->
+        <div class="section-title">🔄 TOWS Matrix – Turning SWOT into Strategy</div>
+        <div class="section-subtitle">Use your SWOT analysis to develop strategic options for your chosen business.</div>
+        <div class="tows-grid">
+            <div class="tows-cell" data-strategy="so">
+                <h4>💪 + 🚀 SO Strategies</h4>
+                <div class="description">Use Strengths to seize Opportunities</div>
+                <textarea id="tows_so" placeholder="e.g., 'Use strong brand to launch sustainable product line...'" maxlength="400"></textarea>
+                <div class="char-counter"><span class="current">0</span> / <span class="max">400</span></div>
+            </div>
+            <div class="tows-cell" data-strategy="wo">
+                <h4>🔻 + 🚀 WO Strategies</h4>
+                <div class="description">Overcome Weaknesses to seize Opportunities</div>
+                <textarea id="tows_wo" placeholder="e.g., 'Invest in online platform to reach new markets...'" maxlength="400"></textarea>
+                <div class="char-counter"><span class="current">0</span> / <span class="max">400</span></div>
+            </div>
+            <div class="tows-cell" data-strategy="st">
+                <h4>💪 + ⚠️ ST Strategies</h4>
+                <div class="description">Use Strengths to mitigate Threats</div>
+                <textarea id="tows_st" placeholder="e.g., 'Use brand loyalty to withstand new competitors...'" maxlength="400"></textarea>
+                <div class="char-counter"><span class="current">0</span> / <span class="max">400</span></div>
+            </div>
+            <div class="tows-cell" data-strategy="wt">
+                <h4>🔻 + ⚠️ WT Strategies</h4>
+                <div class="description">Minimise Weaknesses and avoid Threats</div>
+                <textarea id="tows_wt" placeholder="e.g., 'Reduce costs to remain competitive during economic downturn...'" maxlength="400"></textarea>
+                <div class="char-counter"><span class="current">0</span> / <span class="max">400</span></div>
+            </div>
+        </div>
+
+        <!-- RECOMMENDATIONS -->
+        <div class="section-title">📋 Recommendations</div>
+        <div class="section-subtitle">Based on your analysis, what should the business do?</div>
+        <div class="tool-grid">
+            <div class="tool-card" style="grid-column: 1 / -1;">
+                <h3>💡 Your Recommendations</h3>
+                <div class="description">Write 3-5 clear recommendations for your chosen business. Be specific and actionable.</div>
+                <textarea id="recommendations" placeholder="e.g., '1. Launch a plant-based range to capture growing demand... 2. Invest in AI supply chain optimisation to reduce costs... 3. Expand into new international markets...'" style="min-height:100px;" maxlength="1200"></textarea>
+                <div class="char-counter"><span class="current">0</span> / <span class="max">1200</span></div>
+                <div class="hint">💡 Each recommendation should be linked to your PESTLE, SWOT, and TOWS analysis.</div>
+            </div>
+        </div>
+
+        <!-- CHECKLIST -->
+        <div class="checklist">
+            <h4>✅ Assessment Checklist – Tick Each Item as You Complete It</h4>
+            <ul>
+                <li><input type="checkbox" id="check1" /><label for="check1">Have I chosen a specific business?</label></li>
+                <li><input type="checkbox" id="check2" /><label for="check2">Have I completed a PESTLE analysis with sources?</label></li>
+                <li><input type="checkbox" id="check3" /><label for="check3">Have I completed a SWOT analysis with evidence?</label></li>
+                <li><input type="checkbox" id="check4" /><label for="check4">Have I completed a TOWS analysis with strategic options?</label></li>
+                <li><input type="checkbox" id="check5" /><label for="check5">Have I identified clear recommendations?</label></li>
+                <li><input type="checkbox" id="check6" /><label for="check6">Have I used evidence and references throughout?</label></li>
+            </ul>
+            <div class="checklist-progress">
+                <svg class="progress-ring" viewBox="0 0 40 40">
+                    <circle class="progress-ring__track" cx="20" cy="20" r="16" fill="none" stroke="var(--border-light)" stroke-width="4"/>
+                    <circle class="progress-ring__circle" cx="20" cy="20" r="16" fill="none" stroke="var(--bsu-navy)" stroke-width="4" stroke-dasharray="100" stroke-dashoffset="100" stroke-linecap="round"/>
+                </svg>
+                <span class="checklist-progress-text" id="progressText">0 of 6 complete</span>
+            </div>
+            <div style="margin-top: 10px; font-size: 14px; color: var(--text-muted);">
+                💡 Use this checklist to track your progress. Everything should be completed before you submit your report.
+            </div>
+        </div>
+
+        <!-- PEER FEEDBACK SECTION -->
+        <div class="peer-feedback-section">
+            <h2>🗣️ Stage 2: Peer Feedback</h2>
+            <p class="sub">
+                <strong>Instructions:</strong> Find a partner. Swap your work (share your screen, email, or printed copy).
+                Read your partner's analysis carefully, then complete the sections below.
+                <br /><br />
+                <strong>⏳ Time:</strong> 15 minutes (5 minutes reading + 10 minutes providing feedback).
+                <br />
+                <strong>💡 Be specific, kind, and constructive.</strong> Your goal is to help your partner improve their assessment.
+            </p>
+
+            <div class="peer-name">
+                <label for="peer_name">👤 Your Partner's Name:</label>
+                <input type="text" id="peer_name" placeholder="Enter your partner's name..." />
+            </div>
+
+            <div class="feedback-grid">
+                <div class="feedback-box">
+                    <h4>💪 Strengths of Their Analysis</h4>
+                    <div class="fb-desc">What did they do well? What impressed you?</div>
+                    <textarea id="feedback_strengths" placeholder="e.g., 'Your PESTLE analysis is very thorough...'" maxlength="600"></textarea>
+                    <div class="char-counter"><span class="current">0</span> / <span class="max">600</span></div>
+                </div>
+                <div class="feedback-box">
+                    <h4>🔍 Areas for Improvement</h4>
+                    <div class="fb-desc">What could they improve? What is missing or unclear?</div>
+                    <textarea id="feedback_improvements" placeholder="e.g., 'You could add more evidence for your SWOT analysis...'" maxlength="600"></textarea>
+                    <div class="char-counter"><span class="current">0</span> / <span class="max">600</span></div>
+                </div>
+                <div class="feedback-box">
+                    <h4>❓ Questions I Had</h4>
+                    <div class="fb-desc">What questions came to mind as you read their analysis?</div>
+                    <textarea id="feedback_questions" placeholder="e.g., 'Why did you choose this business? Have you considered...?'" maxlength="600"></textarea>
+                    <div class="char-counter"><span class="current">0</span> / <span class="max">600</span></div>
+                </div>
+                <div class="feedback-box">
+                    <h4>💡 One Suggestion to Make It Stronger</h4>
+                    <div class="fb-desc">What is ONE thing they could change to improve their assessment?</div>
+                    <textarea id="feedback_suggestion" placeholder="e.g., 'Add a brief introduction to your chosen business before the PESTLE...'" maxlength="600"></textarea>
+                    <div class="char-counter"><span class="current">0</span> / <span class="max">600</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTION PLAN SECTION (MOVED & SEPARATED) -->
+        <div class="action-plan-section">
+            <h2>📝 My Action Plan (For You Only)</h2>
+            <p class="sub">After receiving feedback from your partner, take 2 minutes to note what you will change.</p>
+            <div class="private-note">🔒 This section is for your eyes only – your partner does not fill this in.</div>
+            <textarea id="action_plan" placeholder="e.g., 'I will add more evidence to my SWOT analysis and include a brief introduction to my chosen business...'" maxlength="800"></textarea>
+            <div class="char-counter"><span class="current">0</span> / <span class="max">800</span> characters</div>
+        </div>
+
+        <!-- STAGE 3: CLASS SHARING SECTION (NEW) -->
+        <div class="stage3-section">
+            <h2>🎤 Stage 3: Prepare for Class Sharing</h2>
+            <p class="sub">Use the boxes below to prepare your thoughts before the class discussion. Your tutor will invite you to share.</p>
+            
+            <div class="grid-3">
+                <div class="stage3-card">
+                    <h4>💬 Best Feedback I Received</h4>
+                    <div class="desc">What was the most helpful comment from your partner?</div>
+                    <textarea id="stage3_best" placeholder="e.g., 'My partner suggested I add more recent sources...'" maxlength="400"></textarea>
+                    <div class="char-counter"><span class="current">0</span>/400</div>
+                </div>
+                
+                <div class="stage3-card">
+                    <h4>🔄 One Change I'll Make</h4>
+                    <div class="desc">Based on feedback, what will you improve in your assessment?</div>
+                    <textarea id="stage3_change" placeholder="e.g., 'I will strengthen my TOWS strategies with clearer links to SWOT...'" maxlength="400"></textarea>
+                    <div class="char-counter"><span class="current">0</span>/400</div>
+                </div>
+                
+                <div class="stage3-card">
+                    <h4>💡 Insight from Giving Feedback</h4>
+                    <div class="desc">What did you learn by reviewing someone else's work?</div>
+                    <textarea id="stage3_insight" placeholder="e.g., 'I realised I need to be more specific with my PESTLE evidence...'" maxlength="400"></textarea>
+                    <div class="char-counter"><span class="current">0</span>/400</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ONE THING -->
+        <div class="one-thing">
+            🏗️ The Business Environment – The One Thing
+            <span>
+                "Every business is a building. PESTLE is the weather outside.
+                SWOT is your bricks and mortar. TOWS is your blueprint for the future.
+                Today, you start building your assessment – with help from your peers."
+            </span>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="action-bar">
+            <button class="btn btn-primary" id="savePdfBtn">📄 Save as PDF</button>
+            <button class="btn btn-email" id="emailBtn">📧 Email My Work</button>
+            <button class="btn btn-share" id="shareLinkBtn">🔗 Save Shareable Link</button>
+            <button class="btn btn-danger" id="resetBtn">🔄 Reset All</button>
+            <span class="save-status" id="saveStatus">Auto-saved</span>
+        </div>
+
+        <div id="resetConfirm" class="reset-confirm">
+            ✅ All answers have been cleared. Start fresh!
+        </div>
+
+        <!-- MODULE FOOTER -->
+        <div class="module-footer">
+            <strong>Module:</strong> BMA4000-20 – The Business Environment &nbsp;|&nbsp;
+            <strong>Module Leader:</strong> Mohammad Hbubati &nbsp;|&nbsp;
+            <strong>Email:</strong> <a href="mailto:m.hbubati@bathspa.ac.uk">m.hbubati@bathspa.ac.uk</a>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        (function() {
+            const container = document.getElementById('activityContainer');
+            const resetBtn = document.getElementById('resetBtn');
+            const saveBtn = document.getElementById('savePdfBtn');
+            const emailBtn = document.getElementById('emailBtn');
+            const shareLinkBtn = document.getElementById('shareLinkBtn');
+            const confirmDiv = document.getElementById('resetConfirm');
+            const saveStatus = document.getElementById('saveStatus');
+            const textareas = container.querySelectorAll('textarea');
+            const checkboxes = container.querySelectorAll('.checklist input[type="checkbox"]');
+            const stageIndicator = document.getElementById('stageIndicator');
+            const stageDots = document.querySelectorAll('.stage-dot');
+            const progressText = document.getElementById('progressText');
+            const progressCircle = document.querySelector('.progress-ring__circle');
+            const ttsBtn = document.getElementById('ttsInstructions');
+
+            const STORAGE_KEY = 'assessment_clinic_worksheet';
+            const CIRCLE_RADIUS = 16;
+            const CIRCLE_CIRCUMFERENCE = 2 * Math.PI * CIRCLE_RADIUS;
+
+            // Theme Toggle
+            const themeToggle = document.getElementById('themeToggle');
+            const themeLabel = themeToggle.querySelector('.theme-label');
+            const savedTheme = localStorage.getItem('assessmentTheme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeLabel.textContent = 'Light Mode';
+            }
+            
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                if (currentTheme === 'dark') {
+                    document.documentElement.removeAttribute('data-theme');
+                    localStorage.setItem('assessmentTheme', 'light');
+                    themeLabel.textContent = 'Dark Mode';
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('assessmentTheme', 'dark');
+                    themeLabel.textContent = 'Light Mode';
+                }
+            });
+
+            // Confetti
+            const Confetti = {
+                canvas: document.getElementById('confetti-canvas'),
+                ctx: null,
+                particles: [],
+                active: false,
+                init() {
+                    this.ctx = this.canvas.getContext('2d');
+                    this.resize();
+                    window.addEventListener('resize', () => this.resize());
+                },
+                resize() {
+                    this.canvas.width = window.innerWidth;
+                    this.canvas.height = window.innerHeight;
+                },
+                start() {
+                    this.active = true;
+                    this.canvas.classList.add('active');
+                    this.particles = [];
+                    for (let i = 0; i < 120; i++) {
+                        this.particles.push({
+                            x: Math.random() * this.canvas.width,
+                            y: Math.random() * this.canvas.height - this.canvas.height,
+                            size: Math.random() * 4 + 2,
+                            speedY: Math.random() * 3 + 2,
+                            speedX: Math.random() * 2 - 1,
+                            color: this.randomColor(),
+                            rotation: Math.random() * 360,
+                            rotationSpeed: Math.random() * 10 - 5
+                        });
+                    }
+                    this.animate();
+                    setTimeout(() => this.stop(), 5000);
+                },
+                randomColor() {
+                    const colors = ['#003366', '#0055A4', '#4C98C9', '#c9a84c', '#10b981', '#3b82f6'];
+                    return colors[Math.floor(Math.random() * colors.length)];
+                },
+                animate() {
+                    if (!this.active) return;
+                    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                    this.particles.forEach(p => {
+                        p.y += p.speedY; p.x += p.speedX; p.rotation += p.rotationSpeed;
+                        if (p.y > this.canvas.height) { p.y = -10; p.x = Math.random() * this.canvas.width; }
+                        this.ctx.save();
+                        this.ctx.translate(p.x, p.y);
+                        this.ctx.rotate(p.rotation * Math.PI / 180);
+                        this.ctx.fillStyle = p.color;
+                        this.ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+                        this.ctx.restore();
+                    });
+                    requestAnimationFrame(() => this.animate());
+                },
+                stop() {
+                    this.active = false;
+                    this.canvas.classList.remove('active');
+                    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                }
+            };
+            Confetti.init();
+
+            // Text-to-Speech
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            
+            function speakText(text, button) {
+                if (speechSynthesis.speaking) {
+                    speechSynthesis.cancel();
+                    if (button) button.classList.remove('speaking');
+                    return;
+                }
+                const cleanText = text.replace(/[🎓📋⏳💡✅🗣️🔊]/g, '').replace(/\n+/g, '. ').replace(/\s+/g, ' ').trim();
+                if (!cleanText) return;
+                const utterance = new SpeechSynthesisUtterance(cleanText);
+                utterance.rate = 0.9;
+                utterance.pitch = 1;
+                utterance.lang = 'en-GB';
+                if (button) {
+                    button.classList.add('speaking');
+                    button.textContent = '⏹️';
+                    button.setAttribute('aria-label', 'Stop reading');
+                }
+                utterance.onend = () => {
+                    if (button) {
+                        button.classList.remove('speaking');
+                        button.textContent = '🔊';
+                        button.setAttribute('aria-label', 'Read aloud');
+                    }
+                };
+                utterance.onerror = () => {
+                    if (button) {
+                        button.classList.remove('speaking');
+                        button.textContent = '🔊';
+                        button.setAttribute('aria-label', 'Read aloud');
+                    }
+                };
+                currentUtterance = utterance;
+                speechSynthesis.speak(utterance);
+            }
+            
+            ttsBtn.addEventListener('click', () => {
+                const instructions = document.querySelector('.stage-instructions');
+                if (instructions) speakText(instructions.innerText, ttsBtn);
+            });
+            
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.tts-btn') && speechSynthesis.speaking) {
+                    speechSynthesis.cancel();
+                    if (ttsBtn) {
+                        ttsBtn.classList.remove('speaking');
+                        ttsBtn.textContent = '🔊';
+                        ttsBtn.setAttribute('aria-label', 'Read aloud');
+                    }
+                }
+            });
+
+            // Progress Ring
+            function updateProgressRing() {
+                const total = checkboxes.length;
+                const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+                const percentage = checked / total;
+                progressText.textContent = `${checked} of ${total} complete`;
+                if (checked === total) {
+                    progressText.classList.add('complete');
+                    Confetti.start();
+                } else {
+                    progressText.classList.remove('complete');
+                }
+                const offset = CIRCLE_CIRCUMFERENCE * (1 - percentage);
+                progressCircle.style.strokeDashoffset = offset;
+            }
+
+            // Auto-expand Textareas
+            function autoExpand(el) {
+                el.style.height = 'auto';
+                el.style.height = Math.min(el.scrollHeight, 400) + 'px';
+            }
+
+            // Character Counter
+            function updateCharCounter(textarea) {
+                const counter = textarea.closest('.tool-card')?.querySelector('.char-counter') || 
+                               textarea.closest('.feedback-box')?.querySelector('.char-counter') ||
+                               textarea.closest('.action-plan-section')?.querySelector('.char-counter') ||
+                               textarea.closest('.stage3-card')?.querySelector('.char-counter');
+                if (!counter) return;
+                const current = counter.querySelector('.current');
+                const max = parseInt(textarea.maxLength) || 1000;
+                const length = textarea.value.length;
+                current.textContent = length;
+                if (length > max * 0.9) {
+                    counter.classList.add('danger');
+                    counter.classList.remove('warning');
+                } else if (length > max * 0.75) {
+                    counter.classList.add('warning');
+                    counter.classList.remove('danger');
+                } else {
+                    counter.classList.remove('warning', 'danger');
+                }
+            }
+
+            // Save/Load LocalStorage
+            function saveToLocalStorage() {
+                const data = {};
+                textareas.forEach(ta => { data[ta.id] = ta.value; });
+                checkboxes.forEach(cb => { data[cb.id] = cb.checked; });
+                const peerName = document.getElementById('peer_name');
+                if (peerName) data.peer_name = peerName.value;
+                try {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+                    saveStatus.textContent = 'Saved ✓';
+                    saveStatus.classList.add('saved');
+                    setTimeout(() => { saveStatus.textContent = 'Auto-saved'; saveStatus.classList.remove('saved'); }, 2000);
+                } catch (e) { console.warn('Could not save to localStorage'); }
+            }
+
+            function loadFromLocalStorage() {
+                try {
+                    const stored = localStorage.getItem(STORAGE_KEY);
+                    if (!stored) return;
+                    const data = JSON.parse(stored);
+                    textareas.forEach(ta => {
+                        if (data[ta.id] !== undefined && data[ta.id] !== null) {
+                            ta.value = data[ta.id];
+                            setTimeout(() => { autoExpand(ta); updateCharCounter(ta); }, 50);
+                        }
+                    });
+                    checkboxes.forEach(cb => {
+                        if (data[cb.id] !== undefined) { cb.checked = data[cb.id]; updateChecklistStyle(cb); }
+                    });
+                    const peerName = document.getElementById('peer_name');
+                    if (peerName && data.peer_name !== undefined) peerName.value = data.peer_name;
+                    updateProgressRing();
+                } catch (e) { console.warn('Could not load from localStorage'); }
+            }
+
+            function updateChecklistStyle(cb) {
+                const li = cb.closest('li');
+                if (!li) return;
+                li.classList.toggle('checked', cb.checked);
+                updateProgressRing();
+            }
+
+            // Stage Progress
+            function updateStageProgress() {
+                const pestleComplete = ['pestle_political', 'pestle_economic', 'pestle_social', 'pestle_technological', 'pestle_legal', 'pestle_environmental'].every(id => document.getElementById(id)?.value.trim().length > 10);
+                const swotComplete = ['swot_strengths', 'swot_weaknesses', 'swot_opportunities', 'swot_threats'].every(id => document.getElementById(id)?.value.trim().length > 10);
+                const towsComplete = ['tows_so', 'tows_wo', 'tows_st', 'tows_wt'].every(id => document.getElementById(id)?.value.trim().length > 10);
+                const recommendationsComplete = document.getElementById('recommendations')?.value.trim().length > 30;
+                if (pestleComplete && swotComplete && towsComplete && recommendationsComplete) {
+                    stageDots[0].classList.add('completed'); stageDots[0].classList.remove('active');
+                    stageDots[1].classList.add('active'); stageIndicator.classList.add('completed');
+                }
+                const peerFeedback = ['feedback_strengths', 'feedback_improvements', 'feedback_questions', 'feedback_suggestion'];
+                const peerComplete = peerFeedback.some(id => document.getElementById(id)?.value.trim().length > 10);
+                if (peerComplete && stageDots[1].classList.contains('active')) {
+                    stageDots[1].classList.add('completed'); stageDots[1].classList.remove('active');
+                    stageDots[2].classList.add('active');
+                }
+                // Stage 3: Check if any stage3 fields have content
+                const stage3Complete = ['stage3_best', 'stage3_change', 'stage3_insight'].some(id => document.getElementById(id)?.value.trim().length > 10);
+                if (stage3Complete && stageDots[2].classList.contains('active')) {
+                    stageDots[2].classList.add('completed');
+                }
+            }
+
+            // Email Function
+            function emailMyWork() {
+                const business = document.getElementById('business_info')?.value || 'Not specified';
+                const recommendations = document.getElementById('recommendations')?.value || 'Not completed';
+                const subject = encodeURIComponent('BMA4000 Assessment Clinic - My Work');
+                const body = encodeURIComponent(`BMA4000 - The Business Environment\nAssessment Clinic Worksheet\n================================\n\nBusiness Analysed:\n${business}\n\nMy Recommendations:\n${recommendations}\n\n--------------------------------\nNote: This is a summary. For the full worksheet, please use the "Save as PDF" button or return to the original link on the same device.\n\nModule Leader: Mohammad Hbubati\nEmail: m.hbubati@bathspa.ac.uk`);
+                window.location.href = `mailto:?subject=${subject}&body=${body}`;
+                const originalText = emailBtn.innerHTML;
+                emailBtn.innerHTML = '✓ Email Opened';
+                setTimeout(() => { emailBtn.innerHTML = originalText; }, 2000);
+            }
+
+            // Shareable Link
+            function generateShareableLink() {
+                const shareData = {
+                    business: document.getElementById('business_info')?.value?.substring(0, 200) || '',
+                    completed: Array.from(checkboxes).filter(cb => cb.checked).map(cb => cb.id),
+                    timestamp: new Date().toISOString()
+                };
+                const encoded = btoa(encodeURIComponent(JSON.stringify(shareData)));
+                return `${window.location.origin}${window.location.pathname}?work=${encoded}`;
+            }
+
+            function showShareModal() {
+                const modal = document.getElementById('shareModal');
+                const linkBox = document.getElementById('shareLink');
+                linkBox.textContent = generateShareableLink();
+                modal.classList.add('active');
+                const closeModal = () => modal.classList.remove('active');
+                document.getElementById('modalClose').onclick = closeModal;
+                document.getElementById('closeModalBtn').onclick = closeModal;
+                modal.onclick = (e) => { if (e.target === modal) closeModal(); };
+                document.getElementById('copyLinkBtn').onclick = () => {
+                    navigator.clipboard.writeText(linkBox.textContent).then(() => {
+                        const btn = document.getElementById('copyLinkBtn');
+                        const original = btn.textContent;
+                        btn.textContent = '✓ Copied!';
+                        setTimeout(() => btn.textContent = original, 2000);
+                    });
+                };
+                document.addEventListener('keydown', function closeOnEscape(e) {
+                    if (e.key === 'Escape') { closeModal(); document.removeEventListener('keydown', closeOnEscape); }
+                });
+            }
+
+            // Reset
+            function resetAllAnswers() {
+                if (!confirm('⚠️ Are you sure you want to clear ALL your answers?\n\nThis cannot be undone (unless you have saved a PDF).')) return;
+                textareas.forEach(ta => { ta.value = ''; ta.style.height = 'auto'; updateCharCounter(ta); });
+                checkboxes.forEach(cb => { cb.checked = false; updateChecklistStyle(cb); });
+                const peerName = document.getElementById('peer_name');
+                if (peerName) peerName.value = '';
+                stageDots.forEach((dot, i) => { dot.classList.remove('completed', 'active'); if (i === 0) dot.classList.add('active'); });
+                stageIndicator.classList.remove('completed');
+                updateProgressRing();
+                localStorage.removeItem(STORAGE_KEY);
+                confirmDiv.classList.add('show');
+                setTimeout(() => confirmDiv.classList.remove('show'), 4000);
+            }
+
+            // PDF
+            function expandAllForPDF() {
+                textareas.forEach(ta => { ta.style.height = 'auto'; ta.style.height = Math.min(ta.scrollHeight, 600) + 'px'; });
+            }
+
+            function saveAsPDF() {
+                if (document.activeElement && document.activeElement.tagName === 'TEXTAREA') document.activeElement.blur();
+                saveToLocalStorage();
+                expandAllForPDF();
+                const originalText = saveBtn.innerHTML;
+                saveBtn.innerHTML = '🔄 Generating...';
+                saveBtn.disabled = true;
+                setTimeout(() => {
+                    const opt = {
+                        margin: [0.5, 0.5, 0.5, 0.5],
+                        filename: 'BMA4000_Assessment_Clinic_MyWork.pdf',
+                        image: { type: 'jpeg', quality: 0.98 },
+                        html2canvas: { scale: 2, letterRendering: true, useCORS: true, logging: false, windowHeight: container.scrollHeight + 600, height: container.scrollHeight + 600 },
+                        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+                    };
+                    html2pdf().set(opt).from(container).save().then(() => {
+                        saveBtn.innerHTML = originalText;
+                        saveBtn.disabled = false;
+                        textareas.forEach(ta => { setTimeout(() => { autoExpand(ta); updateCharCounter(ta); }, 100); });
+                    }).catch(err => {
+                        console.error('PDF generation failed:', err);
+                        saveBtn.innerHTML = '❌ Error';
+                        setTimeout(() => { saveBtn.innerHTML = originalText; saveBtn.disabled = false; }, 2000);
+                    });
+                }, 200);
+            }
+
+            // Event Listeners
+            textareas.forEach(ta => {
+                ta.addEventListener('input', function() { autoExpand(this); updateCharCounter(this); saveToLocalStorage(); updateStageProgress(); });
+                ta.addEventListener('blur', saveToLocalStorage);
+                setTimeout(() => { autoExpand(ta); updateCharCounter(ta); }, 50);
+            });
+            checkboxes.forEach(cb => { cb.addEventListener('change', function() { updateChecklistStyle(this); saveToLocalStorage(); }); });
+            const peerName = document.getElementById('peer_name');
+            if (peerName) { peerName.addEventListener('input', saveToLocalStorage); peerName.addEventListener('blur', saveToLocalStorage); }
+            resetBtn.addEventListener('click', resetAllAnswers);
+            saveBtn.addEventListener('click', saveAsPDF);
+            emailBtn.addEventListener('click', emailMyWork);
+            shareLinkBtn.addEventListener('click', showShareModal);
+            window.addEventListener('beforeunload', saveToLocalStorage);
+
+            // Keyboard Shortcuts
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.key === 's') { e.preventDefault(); saveAsPDF(); }
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('[data-tooltip]').forEach(el => el.blur());
+                    if (speechSynthesis.speaking) { speechSynthesis.cancel(); if (ttsBtn) { ttsBtn.classList.remove('speaking'); ttsBtn.textContent = '🔊'; } }
+                }
+            });
+
+            // Smooth Scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+
+            // Load from Share Link
+            function loadFromShareLink() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const workData = urlParams.get('work');
+                if (workData) {
+                    try {
+                        const decoded = JSON.parse(decodeURIComponent(atob(workData)));
+                        if (decoded.business && document.getElementById('business_info')) {
+                            document.getElementById('business_info').value = decoded.business;
+                            autoExpand(document.getElementById('business_info'));
+                            updateCharCounter(document.getElementById('business_info'));
+                        }
+                        if (decoded.completed && Array.isArray(decoded.completed)) {
+                            decoded.completed.forEach(id => {
+                                const cb = document.getElementById(id);
+                                if (cb) { cb.checked = true; updateChecklistStyle(cb); }
+                            });
+                        }
+                    } catch (e) { console.warn('Could not load shared work:', e); }
+                }
+            }
+
+            // Initialize
+            loadFromLocalStorage();
+            loadFromShareLink();
+            updateProgressRing();
+            updateStageProgress();
+            console.log('✨ Assessment Clinic worksheet FINAL VERSION loaded!');
+            console.log('📧 Module: BMA4000-20 – The Business Environment');
+            console.log('📧 Module Leader: Mohammad Hbubati - m.hbubati@bathspa.ac.uk');
+
+        })();
+    </script>
+</body>
+</html>
