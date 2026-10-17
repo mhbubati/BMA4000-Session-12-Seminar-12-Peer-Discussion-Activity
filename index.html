@@ -1662,47 +1662,103 @@
             color: var(--bsu-light-blue);
         }
 
-        /* MODULE FOOTER */
+        /* ===== FIXED PROFESSIONAL MODULE FOOTER ===== */
         .module-footer {
-            background: var(--bg-section);
-            padding: 18px 24px;
-            border-radius: var(--radius);
-            margin-top: 25px;
-            text-align: center;
-            font-size: 14px;
-            color: var(--text-secondary);
-            border: 1px solid var(--border-light);
-            line-height: 2;
+            width: min(1100px, calc(100% - 32px));
+            margin: 28px auto 24px;
+            padding: 28px 32px 24px;
+            border: 1px solid #d4b44c;
+            border-top: 5px solid #ffd84d;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(125deg, #001a33 0%, #003366 72%, #08284a 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            box-shadow: 0 14px 36px rgba(0, 28, 58, 0.2);
+            position: relative;
+            overflow: hidden;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
+            gap: 8px;
         }
-
-        .module-footer strong {
+        .module-footer__university {
+            margin: 0;
+            font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+            font-weight: 800;
+            letter-spacing: 0.01em;
+            color: #ffe45c;
+        }
+        .module-footer__module {
+            margin: 0;
+            font-size: 1rem;
             font-weight: 700;
-            color: var(--bsu-navy);
+            color: #ffe45c;
         }
-
-        [data-theme="dark"] .module-footer strong {
-            color: var(--bsu-light-blue);
+        .module-footer__contact {
+            margin: 4px 0 0;
+            font-size: 0.95rem;
+            color: #f8fafc;
+            line-height: 1.6;
         }
-
+        .module-footer__contact strong {
+            color: #f8e7ad;
+            font-weight: 700;
+        }
+        .module-footer__divider {
+            width: 76px;
+            height: 2px;
+            margin: 14px auto;
+            background: #ffe45c;
+            border-radius: 1px;
+        }
+        .module-footer__tagline {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ffe45c;
+            letter-spacing: 0.015em;
+        }
+        .module-footer__note {
+            margin: 6px 0 0;
+            font-size: 0.85rem;
+            color: #e2eaf3;
+            line-height: 1.5;
+            max-width: 720px;
+        }
         .module-footer a {
-            color: var(--bsu-navy);
+            color: #ffe45c;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
             font-weight: 700;
-            text-decoration: none;
             transition: color var(--transition-fast);
         }
-
-        [data-theme="dark"] .module-footer a {
-            color: var(--bsu-light-blue);
-        }
-
         .module-footer a:hover {
-            color: var(--bsu-gold);
-            text-decoration: underline;
+            color: #ffffff;
+        }
+        .module-footer a:focus-visible {
+            outline: 3px solid #ffe45c;
+            outline-offset: 4px;
+            border-radius: 3px;
+        }
+        @media (max-width: 560px) {
+            .module-footer {
+                width: calc(100% - 24px);
+                padding: 22px 18px;
+            }
+            .module-footer__contact {
+                overflow-wrap: anywhere;
+            }
+        }
+        @media print {
+            .module-footer {
+                width: 100%;
+                margin: 18px 0 0;
+                box-shadow: none;
+                break-inside: avoid;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
         }
 
         /* CONFETTI CANVAS */
@@ -1857,7 +1913,6 @@
             .module-footer {
                 font-size: 13px;
                 padding: 14px 18px;
-                flex-direction: column;
                 gap: 8px;
             }
             .modal {
@@ -1908,6 +1963,45 @@
             .stage3-section {
                 break-inside: avoid;
             }
+        }
+
+        /* INTERACTION SAFETY: keep all worksheet fields above decorative layers and fully editable. */
+        #activityContainer input:not([type="checkbox"]),
+        #activityContainer textarea,
+        #activityContainer select,
+        #activityContainer [contenteditable="true"] {
+            position: relative;
+            z-index: 2;
+            pointer-events: auto;
+            user-select: text;
+            -webkit-user-select: text;
+            opacity: 1;
+        }
+
+        #activityContainer textarea,
+        #activityContainer input {
+            cursor: text;
+        }
+
+        #activityContainer label,
+        #activityContainer button,
+        #activityContainer input[type="checkbox"] {
+            position: relative;
+            z-index: 2;
+            pointer-events: auto;
+        }
+
+        .activity-container::before,
+        .activity-container::after,
+        .tool-card::before,
+        .tool-card::after,
+        .tows-cell::before,
+        .tows-cell::after,
+        .peer-feedback-section::before,
+        .action-plan-section::before,
+        .stage3-section::before,
+        .one-thing::before {
+            pointer-events: none !important;
         }
 
         /* ACCESSIBILITY */
@@ -2310,17 +2404,23 @@
             ✅ All answers have been cleared. Start fresh!
         </div>
 
-        <!-- MODULE FOOTER -->
-        <div class="module-footer">
-            <strong>Module:</strong> BMA4000-20 – The Business Environment &nbsp;|&nbsp;
-            <strong>Module Leader:</strong> Mohammad Hbubati &nbsp;|&nbsp;
-            <strong>Email:</strong> <a href="mailto:m.hbubati@bathspa.ac.uk">m.hbubati@bathspa.ac.uk</a>
-        </div>
+        <!-- Duplicate legacy footer removed; the accessible footer below is the only footer. -->
 
     </div>
 
     <!-- JAVASCRIPT -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <footer class="module-footer" aria-label="Module and university information">
+        <p class="module-footer__university">🏛️ Bath Spa University – Hackney</p>
+        <p class="module-footer__module">BMA4000 – The Business Environment</p>
+        <p class="module-footer__contact"><strong>Module Leader:</strong> Mohammad Hbubati</p>
+        <p class="module-footer__contact">📧 <a href="mailto:m.hbubati@bathspa.ac.uk">m.hbubati@bathspa.ac.uk</a></p>
+        <div class="module-footer__divider" aria-hidden="true"></div>
+        <p class="module-footer__tagline">🌍 Designed for Active and Sustainable Learning 🌱</p>
+        <p class="module-footer__note">Explore ideas, think critically, collaborate responsibly, and turn insight into positive action.</p>
+    </footer>
+
     <script>
         (function() {
             const container = document.getElementById('activityContainer');
@@ -2345,7 +2445,7 @@
             // Theme Toggle
             const themeToggle = document.getElementById('themeToggle');
             const themeLabel = themeToggle.querySelector('.theme-label');
-            const savedTheme = localStorage.getItem('assessmentTheme');
+            const savedTheme = (() => { try { return localStorage.getItem('assessmentTheme'); } catch (e) { return null; } })();
             const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             
             if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
@@ -2357,11 +2457,11 @@
                 const currentTheme = document.documentElement.getAttribute('data-theme');
                 if (currentTheme === 'dark') {
                     document.documentElement.removeAttribute('data-theme');
-                    localStorage.setItem('assessmentTheme', 'light');
+                    try { localStorage.setItem('assessmentTheme', 'light'); } catch (e) { /* Storage may be unavailable; theme still changes for this session. */ }
                     themeLabel.textContent = 'Dark Mode';
                 } else {
                     document.documentElement.setAttribute('data-theme', 'dark');
-                    localStorage.setItem('assessmentTheme', 'dark');
+                    try { localStorage.setItem('assessmentTheme', 'dark'); } catch (e) { /* Storage may be unavailable; theme still changes for this session. */ }
                     themeLabel.textContent = 'Light Mode';
                 }
             });
@@ -2703,7 +2803,7 @@
                 if ((e.ctrlKey || e.metaKey) && e.key === 's') { e.preventDefault(); saveAsPDF(); }
                 if (e.key === 'Escape') {
                     document.querySelectorAll('[data-tooltip]').forEach(el => el.blur());
-                    if (speechSynthesis.speaking) { speechSynthesis.cancel(); if (ttsBtn) { ttsBtn.classList.remove('speaking'); ttsBtn.textContent = '🔊'; } }
+                    if (window.speechSynthesis && window.speechSynthesis.speaking) { window.speechSynthesis.cancel(); if (ttsBtn) { ttsBtn.classList.remove('speaking'); ttsBtn.textContent = '🔊'; } }
                 }
             });
 
